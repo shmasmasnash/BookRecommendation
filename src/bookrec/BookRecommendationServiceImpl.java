@@ -104,6 +104,7 @@ public class BookRecommendationServiceImpl implements BookRecommendationService 
 			String isbn = "UNINIT";
 			String link = "UNINIT";
 			String author = "UNINIT";
+			String pubDate = "UNINIT";
 			//String ISBNnum;
 			
 			Node nNode = nList.item(temp);
@@ -142,6 +143,10 @@ public class BookRecommendationServiceImpl implements BookRecommendationService 
 						{
 							author = nChild2.getTextContent();
 						}
+						if(nChild2.getNodeName().equals("PublicationDate"))
+						{
+							pubDate = nChild2.getTextContent();
+						}
 						if(nChild2.getNodeName().equals("ISBN"))
 						{
 							isbn = nChild2.getTextContent();
@@ -149,13 +154,13 @@ public class BookRecommendationServiceImpl implements BookRecommendationService 
 					}
 				}
 			}
-			Book toAdd = new Book(name, medURL, isbn, link, author);
+			Book toAdd = new Book(name, medURL, isbn, link, author, pubDate);
 			toReturn.add(toAdd);
 			/*System.out.println(name);
 			System.out.println(medURL);
 			System.out.println(isbn);
 			System.out.println();*/
-			//System.out.println(author);
+			//System.out.println(pubDate);
 			/*if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 	 
 				Element eElement = (Element) nNode;
